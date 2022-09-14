@@ -4,12 +4,11 @@ for (var i = 0; i < updateBtns.length; i++) {
         var productId = this.dataset.product;
         var action = this.dataset.action;
 
-        if (user === "AnonymousUser") {
-            console.log("not logged in");
-            alert("please login first");
-        } else {
-            consloe.log("loged");
+        if (user != "AnonymousUser") {
             updateUserOrder(productId, action);
+        } else {
+            console.log("notttt logged in");
+            alert("please login first");
         }
     });
 }
@@ -29,7 +28,6 @@ function updateUserOrder(productId, action) {
             return response.json();
         })
         .then((data) => {
-            console.log("data:", data);
             location.reload();
         });
 }

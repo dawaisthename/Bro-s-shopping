@@ -58,10 +58,9 @@ def all(request,cata):
 @login_required
 def profile(request, *args, **kwargs):
     if request.user.is_authenticated:
-        print('yes')
+        return render(request,'profile.html')
     else:
-        print('no')
-    return render(request,'profile.html')
+        pass
 @login_required
 def update_profile(request, *args, **kwargs):
     u_form = UserUpdateForm()
@@ -99,8 +98,7 @@ def updateItem(request):
     data = json.loads(request.body)
     productId= data['productId']
     action = data['action']
-    print('productId:',productId)
-    print('action:',action)
+
     customer = request.user.customer
     product = Products.objects.get(id=productId)
     order ,created =Order.objects.get_or_create(customer=customer, compelete=False)
