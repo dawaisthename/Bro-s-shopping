@@ -16,16 +16,16 @@ def Home(request, *args, **kwargs):
     shirts = shirts_catagory.products_set.all()[:4]
     pants_catagory = Catagories.objects.get(name = 'pants')
     pants = pants_catagory.products_set.all()[:4]
-    if request.user.is_authenticated:
-        cartItems = Order.get_cart_items
-    else:
-        cartItems=0
+    # if request.user.is_authenticated:
+    #     cartItems = Order.get_cart_items
+    # else:
+    #     cartItems=0
 
     context={
         'shoes':shoes,
         'shirts':shirts,
         'pants':pants,
-        'cartitems':cartItems
+        # 'cartitems':cartItems
     }
 
     return render(request,'home.html',context) 
@@ -57,10 +57,8 @@ def all(request,cata):
 
 @login_required
 def profile(request, *args, **kwargs):
-    if request.user.is_authenticated:
-        return render(request,'profile.html')
-    else:
-        pass
+    return render(request,'profile.html')
+    
 @login_required
 def update_profile(request, *args, **kwargs):
     u_form = UserUpdateForm()
@@ -74,8 +72,8 @@ def update_profile(request, *args, **kwargs):
             messages.success(request,f'Account Update Successfully')
             return redirect('profile')
     else:
-        u_form =UserUpdateForm (request.POST,instance=request.user) 
-        p_form =ProfileUpdateForm (request.POST,request.FILES,instance=request.user.profile) 
+        u_form =UserUpdateForm (instance=request.user) 
+        p_form =ProfileUpdateForm (request.FILES,instance=request.user.profile) 
     context = {
     'u_form':u_form,
     'p_form':p_form,
