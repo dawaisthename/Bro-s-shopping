@@ -25,9 +25,9 @@ httpx==0.22.0
 idna==3.3
 joblib==1.1.0
 mysql-connector==2.2.9
-mysqlclient @ file:///C:/Users/BroMan/Desktop/django%20project/train/mysqlclient-1.4.6-cp38-cp38-win32.whl
+# mysqlclient@ file:///C:/Users/BroMan/Desktop/django%20project/train/mysqlclient-1.4.6-cp38-cp38-win32.whl
 nltk==3.7
-Pillow==9.2.0
+Pillow==9.2.0 
 pipenv==2022.1.8
 platformdirs==2.5.0
 psycopg2==2.9.3

@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_view
 urlpatterns=[
     path('',view.Home,name='home'),
-    path('about _us/',view.about_us,name='about_us'),
+    path('about_us/',view.about_us,name='about_us'),
     path('register/',view.Customer_register,name='Customer_register'),
     path('login/',auth_view.LoginView.as_view(template_name="login.html"),name='login'),
     path('logout/',auth_view.LogoutView.as_view(template_name="logout.html"),name='logout'),
